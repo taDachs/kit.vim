@@ -61,7 +61,7 @@ let syntax_groups = {
       \"Keyword"      : {"guifg": kit_exclusive_green[0], "gui": "bold"},
       \"Special"      : {"guifg": kit_cyan_blue[1]},
       \"PreProc"      : {"guifg": kit_exclusive_green[0]},
-      \"Type"         : {"guifg": kit_exclusive_blue[1]},
+      \"Type"         : {"guifg": kit_exclusive_blue[0], "gui": "italic"},
       \"StorageClass" : {"guifg": kit_exclusive_blue[1], "gui": "italic,bold"},
 \}
 
@@ -76,7 +76,7 @@ let gui_element_groups = {
 \}
 
 let pmenu_groups = {
-      \"Pmenu"    : {"guifg": foreground_color[0], "guibg": kit_exclusive_green[0]},
+      \"Pmenu"    : {"guifg": kit_exclusive_green[0], "guibg": background_color[4]},
       \"PmenuSel" : {"guifg": foreground_color[0], "guibg": kit_exclusive_blue[1]},
 \}
 
@@ -90,5 +90,3 @@ call ApplyGroup(line_nr_groups)
 call ApplyGroup(gui_element_groups)
 call ApplyGroup(pmenu_groups)
 call ApplyGroup(misc_groups)
-
-

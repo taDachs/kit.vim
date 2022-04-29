@@ -33,4 +33,4 @@ let s:p.tabline.tabsel = [ [ s:shade1, s:accent1 ] ]
 let s:p.tabline.middle = copy(s:p.normal.middle)
 let s:p.tabline.right = copy(s:p.normal.middle)
 
-let g:lightline#colorscheme#monokai_pro#palette = lightline#colorscheme#fill(s:p)
+let g:lightline#colorscheme#kit#palette = lightline#colorscheme#fill(s:p)
