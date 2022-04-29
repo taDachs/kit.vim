@@ -4,7 +4,7 @@ A dark theme inspired by the [Karlsruhe Institute of Technology](https://www.kit
 ![python highlighting](./images/kit-python.png)
 
 ## Installation
-```vimscript
+```vim
 " vim-plug or any other plugin manager
 Plug 'tadachs/kit.vim'
 
