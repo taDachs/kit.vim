@@ -1,7 +1,7 @@
 # kit.vim
 A dark theme inspired by the [Karlsruhe Institute of Technology](https://www.kit.edu/). The dark colors represent my struggle.
 
-![python highlighting](./images/kit-python.png)
+![python highlighting](./images/kit-python.gif)
 
 ## Installation
 ```vim
