@@ -1,7 +1,19 @@
-hi clear
-syntax reset
-let g:colors_name = "kit"
+" This color scheme was inspired by the KIT corporate design as laid out in https://www.sek.kit.edu/downloads/2_Gestaltungsgrundlagen_Farben.pdf
+" Copyright 2022 Max Schik
+
+" Licensed under the "THE BEER-WARE LICENSE" (Revision 42):
+" Max Schik wrote this file. As long as you retain this notice you
+" can do whatever you want with this stuff. If we meet some day, and you think
+" this stuff is worth it, you can buy me a beer or coffee in return
+
+
 set background=dark
+highlight clear
+
+if exists("syntax_on")
+  syntax reset
+endif
+let g:colors_name = "kit"
 set t_Co=256
 
 let background_color = ["#000000", "#111111", "#222222", "#333333", "#444444"]
@@ -16,42 +28,66 @@ let kit_red = ["#c62033", "#d56959", "#df8f7d", "#ecb8a8", "#f4d9ce"]
 let kit_lila = ["#c2028a", "#d067a9", "#db91be", "#e8bad6", "#f2dae9"]
 let kit_cyan_blue = ["#00ace6", "#0cbfeb", "#75cef0", "#afe0f5", "#d6eff9"]
 
-func SetColor(comp, color, ...)
-  if a:0 > 0
-    let bg = a:1
-  else
-    let bg = "NONE"
-  end
-  exe 'hi! ' . a:comp . ' guifg=' . a:color . ' guibg=' . bg
+fun SetHighlight(comp, settings)
+  let command_string = "hi! " . a:comp
+  for [key,value] in items(a:settings)
+    let command_string .= " " . key . "=" . value
+    unlet key value
+  endfor
+  execute command_string
 endf
 
+fun ApplyGroup(group)
+  for [comp, settings] in items(a:group)
+    call SetHighlight(comp, settings)
+    unlet comp settings
+  endfor
+endf
 
-call SetColor("Normal", foreground_color[1], background_color[3])
-call SetColor("EndOfBuffer", foreground_color[1], background_color[3])
+" main config
+let syntax_groups = {
+      \"Normal"      : {"guifg": foreground_color[1], "guibg": background_color[3]},
+      \"EndOfBuffer" : {"guifg": foreground_color[1], "guibg": background_color[3]},
+      \"Error"       : {"guifg": foreground_color[0], "guibg": kit_red[0]},
+      \"Todo"        : {"guifg": background_color[0], "guibg": foreground_color[0]},
+      \"Comment"     : {"guifg": foreground_color[4], "gui": "italic"},
+      \"Underlined"  : {"guifg": kit_exclusive_green[1]},
+      \"Constant"    : {"guifg": kit_lila[1]},
+      \"String"      : {"guifg": kit_cyan_blue[3]},
+      \"Identifier"  : {"guifg": kit_exclusive_green[2], "gui": "italic"},
+      \"Function"    : {"guifg": kit_exclusive_blue[0]},
+      \"Statement"   : {"guifg": kit_exclusive_green[0], "gui": "bold"},
+      \"Keyword"     : {"guifg": kit_exclusive_green[0], "gui": "bold"},
+      \"Special"     : {"guifg": kit_cyan_blue[1]},
+      \"PreProc"     : {"guifg": kit_exclusive_green[0]},
+      \"Type"        : {"guifg": kit_exclusive_blue[1]},
+\}
 
-call SetColor("Error", foreground_color[0], kit_red[0])
-call SetColor("Todo", background_color[0], foreground_color[0])
+let line_nr_groups = {
+      \"SignColumn" : {"guifg": kit_red[1], "guibg": background_color[4]},
+      \"LineNrAbove" : {"guifg": kit_brown[1], "guibg": background_color[4]},
+      \"LineNr" : {"guifg": kit_brown[2], "guibg": background_color[4]},
+      \"LineNrBelow" : {"guifg": kit_brown[3], "guibg": background_color[4]},
+\}
 
-call SetColor("Comment", foreground_color[4])
+let gui_element_groups = {
+      \"WinSeperator" : {"guifg": kit_exclusive_green[0], "guibg": kit_exclusive_green[0]},
+      \"Visual"       : {"guifg": kit_exclusive_blue[0], "guibg": kit_exclusive_green[4]},
+\}
 
-call SetColor("Underlined", kit_exclusive_green[1])
+let pmenu_groups = {
+      \"Pmenu"    : {"guifg": foreground_color[0], "guibg": kit_exclusive_green[0]},
+      \"PmenuSel" : {"guifg": foreground_color[0], "guibg": kit_exclusive_blue[1]},
+\}
 
-" Constant
-call SetColor("Constant", kit_lila[1])
-call SetColor("String", kit_yellow[2])
+let misc_groups = {
+      \"Title" : {"guifg": foreground_color[0]}
+\}
 
-" Identifier
-call SetColor("Identifier", kit_exclusive_green[2])
-call SetColor("Function", kit_exclusive_blue[0])
-
-" Statement
-call SetColor("Statement", kit_exclusive_green[0])
-call SetColor("Keyword", kit_exclusive_green[0])
-
-" Special
-call SetColor("Special", kit_cyan_blue[1])
+call ApplyGroup(syntax_groups)
+call ApplyGroup(line_nr_groups)
+call ApplyGroup(gui_element_groups)
+call ApplyGroup(pmenu_groups)
+call ApplyGroup(misc_groups)
 
 
-call SetColor("PreProc", kit_exclusive_green[0])
-
-call SetColor("Type", kit_exclusive_blue[1])
