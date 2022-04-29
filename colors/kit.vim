@@ -1,4 +1,5 @@
-" This color scheme was inspired by the KIT corporate design as laid out in https://www.sek.kit.edu/downloads/2_Gestaltungsgrundlagen_Farben.pdf
+" This color scheme was inspired by the KIT corporate design as laid
+" out in https://www.sek.kit.edu/downloads/2_Gestaltungsgrundlagen_Farben.pdf.
 " Copyright 2022 Max Schik
 
 " Licensed under the "THE BEER-WARE LICENSE" (Revision 42):
@@ -14,7 +15,7 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "kit"
-set t_Co=256
+" set t_Co=256
 
 let background_color = ["#000000", "#111111", "#222222", "#333333", "#444444"]
 let foreground_color = ["#ffffff", "#dddddd", "#bbbbbb", "#999999", "#777777"]
@@ -46,28 +47,27 @@ endf
 
 " main config
 let syntax_groups = {
-      \"Normal"      : {"guifg": foreground_color[1], "guibg": background_color[3]},
-      \"EndOfBuffer" : {"guifg": foreground_color[1], "guibg": background_color[3]},
-      \"Error"       : {"guifg": foreground_color[0], "guibg": kit_red[0]},
-      \"Todo"        : {"guifg": background_color[0], "guibg": foreground_color[0]},
-      \"Comment"     : {"guifg": foreground_color[4], "gui": "italic"},
-      \"Underlined"  : {"guifg": kit_exclusive_green[1]},
-      \"Constant"    : {"guifg": kit_lila[1]},
-      \"String"      : {"guifg": kit_cyan_blue[3]},
-      \"Identifier"  : {"guifg": kit_exclusive_green[2], "gui": "italic"},
-      \"Function"    : {"guifg": kit_exclusive_blue[0]},
-      \"Statement"   : {"guifg": kit_exclusive_green[0], "gui": "bold"},
-      \"Keyword"     : {"guifg": kit_exclusive_green[0], "gui": "bold"},
-      \"Special"     : {"guifg": kit_cyan_blue[1]},
-      \"PreProc"     : {"guifg": kit_exclusive_green[0]},
-      \"Type"        : {"guifg": kit_exclusive_blue[1]},
+      \"Normal"       : {"guifg": foreground_color[1], "guibg": background_color[3]},
+      \"EndOfBuffer"  : {"guifg": foreground_color[1], "guibg": background_color[3]},
+      \"Error"        : {"guifg": foreground_color[0], "guibg": kit_red[0]},
+      \"Todo"         : {"guifg": background_color[0], "guibg": foreground_color[0]},
+      \"Comment"      : {"guifg": foreground_color[4], "gui": "italic"},
+      \"Underlined"   : {"guifg": kit_exclusive_green[1]},
+      \"Constant"     : {"guifg": kit_lila[1]},
+      \"String"       : {"guifg": kit_cyan_blue[3]},
+      \"Identifier"   : {"guifg": kit_exclusive_green[2], "gui": "italic"},
+      \"Function"     : {"guifg": kit_exclusive_blue[1]},
+      \"Statement"    : {"guifg": kit_exclusive_green[0], "gui": "bold"},
+      \"Keyword"      : {"guifg": kit_exclusive_green[0], "gui": "bold"},
+      \"Special"      : {"guifg": kit_cyan_blue[1]},
+      \"PreProc"      : {"guifg": kit_exclusive_green[0]},
+      \"Type"         : {"guifg": kit_exclusive_blue[1]},
+      \"StorageClass" : {"guifg": kit_exclusive_blue[1], "gui": "italic,bold"},
 \}
 
 let line_nr_groups = {
       \"SignColumn" : {"guifg": kit_red[1], "guibg": background_color[4]},
-      \"LineNrAbove" : {"guifg": kit_brown[1], "guibg": background_color[4]},
-      \"LineNr" : {"guifg": kit_brown[2], "guibg": background_color[4]},
-      \"LineNrBelow" : {"guifg": kit_brown[3], "guibg": background_color[4]},
+      \"LineNr" : {"guifg": foreground_color[2], "guibg": background_color[4]},
 \}
 
 let gui_element_groups = {
@@ -81,7 +81,8 @@ let pmenu_groups = {
 \}
 
 let misc_groups = {
-      \"Title" : {"guifg": foreground_color[0]}
+      \"Title"  : {"guifg": foreground_color[0]},
+      \"Search" : {"guifg": background_color[2], "guibg": kit_may_green[1]},
 \}
 
 call ApplyGroup(syntax_groups)
