@@ -35,7 +35,7 @@ let kit_red = ["#c62033", "#d56959", "#df8f7d", "#ecb8a8", "#f4d9ce"]
 let kit_lila = ["#c2028a", "#d067a9", "#db91be", "#e8bad6", "#f2dae9"]
 let kit_cyan_blue = ["#00ace6", "#0cbfeb", "#75cef0", "#afe0f5", "#d6eff9"]
 
-fun SetHighlight(comp, settings)
+fun! SetHighlight(comp, settings)
   let command_string = "hi! " . a:comp
   for [key,value] in items(a:settings)
     let value = FilterValue(value)
@@ -49,7 +49,7 @@ fun SetHighlight(comp, settings)
   execute command_string
 endf
 
-fun FilterValue(value)
+fun! FilterValue(value)
   let new_value = a:value
   if g:kit_italic == 0 && stridx(new_value, "italic") > -1
     let new_value = substitute(new_value, 'italic\(,\?\)', "", "")
@@ -60,7 +60,7 @@ fun FilterValue(value)
   return new_value
 endf
 
-fun ApplyGroup(group)
+fun! ApplyGroup(group)
   for [comp, settings] in items(a:group)
     call SetHighlight(comp, settings)
     unlet comp settings
