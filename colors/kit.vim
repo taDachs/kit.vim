@@ -15,7 +15,13 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "kit"
-" set t_Co=256
+set t_Co=256
+if !exists("g:kit_italic")
+  let g:kit_italic = 1
+endif
+if !exists("g:kit_bold")
+  let g:kit_bold = 1
+endif
 
 let background_color = ["#000000", "#111111", "#222222", "#333333", "#444444"]
 let foreground_color = ["#ffffff", "#dddddd", "#bbbbbb", "#999999", "#777777"]
@@ -32,10 +38,26 @@ let kit_cyan_blue = ["#00ace6", "#0cbfeb", "#75cef0", "#afe0f5", "#d6eff9"]
 fun SetHighlight(comp, settings)
   let command_string = "hi! " . a:comp
   for [key,value] in items(a:settings)
+    let value = FilterValue(value)
+    if len(value) == 0
+      echo value
+      continue
+    endif
     let command_string .= " " . key . "=" . value
     unlet key value
   endfor
   execute command_string
+endf
+
+fun FilterValue(value)
+  let new_value = a:value
+  if g:kit_italic == 0 && stridx(new_value, "italic") > -1
+    let new_value = substitute(new_value, 'italic\(,\?\)', "", "")
+  endif
+  if g:kit_bold == 0 && stridx(new_value, "bold") > -1
+    let new_value = substitute(new_value, 'bold\(,\?\)', "", "")
+  endif
+  return new_value
 endf
 
 fun ApplyGroup(group)

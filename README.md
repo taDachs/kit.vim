@@ -14,3 +14,12 @@ colorscheme kit
 " it comes with a lightline theme
 let g:lightline = {'colorscheme': 'kit'}
 ```
+
+## Configuration
+Variables have to be set before `colorscheme kit`
+```vim
+" disable bold
+let g:kit_bold = 0
+" disable italics
+let g:kit_italic = 0
+```
