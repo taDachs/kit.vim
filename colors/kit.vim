@@ -105,7 +105,19 @@ let pmenu_groups = {
 let misc_groups = {
       \"Title"  : {"guifg": foreground_color[0]},
       \"Search" : {"guifg": background_color[2], "guibg": kit_may_green[1]},
+      \"ColorColumn" : {"guifg": foreground_color[3], "guibg": background_color[4]},
+      \"DiffAdd" : {"guifg": kit_may_green[0], "guibg": background_color[3]},
+      \"DiffDelete" : {"guifg": kit_red[0], "guibg": background_color[3]},
+      \"DiffChange" : {"guifg": kit_orange[0], "guibg": background_color[3]},
+      \"Folded"       : {"guifg": kit_exclusive_green[2],  "guibg": background_color[4]},
 \}
+
+let lsp_groups = {
+      \"LspReferenceText" : {"guifg": foreground_color[1], "guibg": kit_lila[1]},
+      \"LspReferenceRead" : {"guifg": foreground_color[1], "guibg": kit_lila[1]},
+      \"LspReferenceWrite" : {"guifg": foreground_color[1], "guibg": kit_red[1]},
+\}
+
 
 call ApplyGroup(syntax_groups)
 call ApplyGroup(line_nr_groups)
