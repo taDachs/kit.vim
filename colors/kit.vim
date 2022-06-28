@@ -69,8 +69,8 @@ endf
 
 " main config
 let syntax_groups = {
-      \"Normal"       : {"guifg": foreground_color[1], "guibg": background_color[3]},
-      \"EndOfBuffer"  : {"guifg": foreground_color[1], "guibg": background_color[3]},
+      \"Normal"       : {"guifg": foreground_color[1], "guibg": background_color[2]},
+      \"EndOfBuffer"  : {"guifg": foreground_color[1], "guibg": background_color[2]},
       \"Error"        : {"guifg": foreground_color[0], "guibg": kit_red[0]},
       \"Todo"         : {"guifg": background_color[0], "guibg": foreground_color[0]},
       \"Comment"      : {"guifg": foreground_color[4], "gui": "italic"},
@@ -88,8 +88,8 @@ let syntax_groups = {
 \}
 
 let line_nr_groups = {
-      \"SignColumn" : {"guifg": kit_red[1], "guibg": background_color[4]},
-      \"LineNr" : {"guifg": foreground_color[2], "guibg": background_color[4]},
+      \"SignColumn" : {"guifg": kit_red[1], "guibg": background_color[3]},
+      \"LineNr" : {"guifg": foreground_color[2], "guibg": background_color[3]},
 \}
 
 let gui_element_groups = {
@@ -106,9 +106,9 @@ let misc_groups = {
       \"Title"  : {"guifg": foreground_color[0]},
       \"Search" : {"guifg": background_color[2], "guibg": kit_may_green[1]},
       \"ColorColumn" : {"guifg": foreground_color[3], "guibg": background_color[4]},
-      \"DiffAdd" : {"guifg": kit_may_green[0], "guibg": background_color[3]},
-      \"DiffDelete" : {"guifg": kit_red[0], "guibg": background_color[3]},
-      \"DiffChange" : {"guifg": kit_orange[0], "guibg": background_color[3]},
+      \"DiffAdd" : {"guifg": kit_may_green[0], "guibg": background_color[2]},
+      \"DiffDelete" : {"guifg": kit_red[0], "guibg": background_color[2]},
+      \"DiffChange" : {"guifg": kit_orange[0], "guibg": background_color[2]},
       \"Folded"       : {"guifg": kit_exclusive_green[2],  "guibg": background_color[4]},
 \}
 
