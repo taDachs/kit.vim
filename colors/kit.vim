@@ -22,6 +22,9 @@ endif
 if !exists("g:kit_bold")
   let g:kit_bold = 1
 endif
+if !exists("g:kit_light")
+  let g:kit_light = 0
+endif
 
 let background_color = ["#000000", "#111111", "#222222", "#333333", "#444444"]
 let foreground_color = ["#ffffff", "#dddddd", "#bbbbbb", "#999999", "#777777"]
@@ -67,10 +70,13 @@ fun! ApplyGroup(group)
   endfor
 endf
 
+"
+" DARK COLORS
+"
 " main config
-let syntax_groups = {
-      \"Normal"       : {"guifg": foreground_color[1], "guibg": background_color[2]},
-      \"EndOfBuffer"  : {"guifg": foreground_color[1], "guibg": background_color[2]},
+let syntax_groups_dark = {
+      \"Normal"       : {"guifg": foreground_color[1], "guibg": background_color[1]},
+      \"EndOfBuffer"  : {"guifg": foreground_color[1], "guibg": background_color[1]},
       \"Error"        : {"guifg": foreground_color[0], "guibg": kit_red[0]},
       \"Todo"         : {"guifg": background_color[0], "guibg": foreground_color[0]},
       \"Comment"      : {"guifg": foreground_color[4], "gui": "italic"},
@@ -87,40 +93,103 @@ let syntax_groups = {
       \"StorageClass" : {"guifg": kit_exclusive_blue[1], "gui": "italic,bold"},
 \}
 
-let line_nr_groups = {
-      \"SignColumn" : {"guifg": kit_red[1], "guibg": background_color[3]},
-      \"LineNr" : {"guifg": foreground_color[2], "guibg": background_color[3]},
+let line_nr_groups_dark = {
+      \"SignColumn" : {"guifg": kit_red[1], "guibg": background_color[2]},
+      \"LineNr" : {"guifg": foreground_color[2], "guibg": background_color[2]},
 \}
 
-let gui_element_groups = {
+let gui_element_groups_dark = {
       \"WinSeperator" : {"guifg": kit_exclusive_green[0], "guibg": kit_exclusive_green[0]},
       \"Visual"       : {"guifg": kit_exclusive_blue[0], "guibg": kit_exclusive_green[4]},
 \}
 
-let pmenu_groups = {
-      \"Pmenu"    : {"guifg": kit_exclusive_green[0], "guibg": background_color[4]},
+let pmenu_groups_dark = {
+      \"Pmenu"    : {"guifg": kit_exclusive_green[0], "guibg": background_color[3]},
       \"PmenuSel" : {"guifg": foreground_color[0], "guibg": kit_exclusive_blue[1]},
 \}
 
-let misc_groups = {
+let misc_groups_dark = {
       \"Title"  : {"guifg": foreground_color[0]},
-      \"Search" : {"guifg": background_color[2], "guibg": kit_may_green[1]},
-      \"ColorColumn" : {"guifg": foreground_color[3], "guibg": background_color[4]},
-      \"DiffAdd" : {"guifg": kit_may_green[0], "guibg": background_color[2]},
-      \"DiffDelete" : {"guifg": kit_red[0], "guibg": background_color[2]},
-      \"DiffChange" : {"guifg": kit_orange[0], "guibg": background_color[2]},
-      \"Folded"       : {"guifg": kit_exclusive_green[2],  "guibg": background_color[4]},
+      \"Search" : {"guifg": background_color[1], "guibg": kit_may_green[1]},
+      \"ColorColumn" : {"guifg": foreground_color[3], "guibg": background_color[3]},
+      \"DiffAdd" : {"guifg": kit_may_green[0], "guibg": background_color[1]},
+      \"DiffDelete" : {"guifg": kit_red[0], "guibg": background_color[1]},
+      \"DiffChange" : {"guifg": kit_orange[0], "guibg": background_color[1]},
+      \"Folded"       : {"guifg": kit_exclusive_green[2],  "guibg": background_color[3]},
 \}
 
-let lsp_groups = {
+let lsp_groups_dark = {
+      \"LspReferenceText" : {"guifg": foreground_color[1], "guibg": kit_lila[1]},
+      \"LspReferenceRead" : {"guifg": foreground_color[1], "guibg": kit_lila[1]},
+      \"LspReferenceWrite" : {"guifg": foreground_color[1], "guibg": kit_red[1]},
+\}
+
+"
+" LIGHT COLORS
+"
+" main config
+let syntax_groups_light = {
+      \"Normal"       : {"guifg": background_color[0], "guibg": foreground_color[0]},
+      \"EndOfBuffer"  : {"guifg": background_color[0], "guibg": foreground_color[0]},
+      \"Error"        : {"guifg": background_color[0], "guibg": kit_red[0]},
+      \"Todo"         : {"guifg": background_color[0], "guibg": background_color[0]},
+      \"Comment"      : {"guifg": background_color[4], "gui": "italic"},
+      \"Underlined"   : {"guifg": kit_exclusive_green[0]},
+      \"Constant"     : {"guifg": kit_lila[0]},
+      \"String"       : {"guifg": kit_cyan_blue[0]},
+      \"Identifier"   : {"guifg": kit_exclusive_green[0], "gui": "italic"},
+      \"Function"     : {"guifg": kit_exclusive_blue[0]},
+      \"Statement"    : {"guifg": kit_exclusive_green[0], "gui": "bold"},
+      \"Keyword"      : {"guifg": kit_exclusive_green[0], "gui": "bold"},
+      \"Special"      : {"guifg": kit_cyan_blue[0]},
+      \"PreProc"      : {"guifg": kit_exclusive_green[0]},
+      \"Type"         : {"guifg": kit_exclusive_blue[0], "gui": "italic"},
+      \"StorageClass" : {"guifg": kit_exclusive_blue[1], "gui": "italic,bold"},
+\}
+
+let line_nr_groups_light = {
+      \"SignColumn" : {"guifg": kit_red[1], "guibg": foreground_color[0]},
+      \"LineNr" : {"guifg": background_color[2], "guibg": foreground_color[0]},
+\}
+
+let gui_element_groups_light = {
+      \"WinSeperator" : {"guifg": kit_exclusive_green[0], "guibg": kit_exclusive_green[0]},
+      \"Visual"       : {"guifg": kit_exclusive_blue[0], "guibg": kit_exclusive_green[4]},
+\}
+
+let pmenu_groups_light = {
+      \"Pmenu"    : {"guifg": kit_exclusive_green[0], "guibg": background_color[3]},
+      \"PmenuSel" : {"guifg": foreground_color[0], "guibg": kit_exclusive_blue[1]},
+\}
+
+let misc_groups_light = {
+      \"Title"  : {"guifg": foreground_color[0]},
+      \"Search" : {"guifg": background_color[1], "guibg": kit_may_green[1]},
+      \"ColorColumn" : {"guifg": foreground_color[3], "guibg": background_color[3]},
+      \"DiffAdd" : {"guifg": kit_may_green[0], "guibg": background_color[1]},
+      \"DiffDelete" : {"guifg": kit_red[0], "guibg": background_color[1]},
+      \"DiffChange" : {"guifg": kit_orange[0], "guibg": background_color[1]},
+      \"Folded"       : {"guifg": kit_exclusive_green[2],  "guibg": background_color[3]},
+\}
+
+let lsp_groups_light = {
       \"LspReferenceText" : {"guifg": foreground_color[1], "guibg": kit_lila[1]},
       \"LspReferenceRead" : {"guifg": foreground_color[1], "guibg": kit_lila[1]},
       \"LspReferenceWrite" : {"guifg": foreground_color[1], "guibg": kit_red[1]},
 \}
 
 
-call ApplyGroup(syntax_groups)
-call ApplyGroup(line_nr_groups)
-call ApplyGroup(gui_element_groups)
-call ApplyGroup(pmenu_groups)
-call ApplyGroup(misc_groups)
+if (g:kit_light == 0)
+  call ApplyGroup(syntax_groups_dark)
+  call ApplyGroup(line_nr_groups_dark)
+  call ApplyGroup(gui_element_groups_dark)
+  call ApplyGroup(pmenu_groups_dark)
+  call ApplyGroup(misc_groups_dark)
+else
+  call ApplyGroup(syntax_groups_light)
+  call ApplyGroup(line_nr_groups_light)
+  call ApplyGroup(gui_element_groups_light)
+  call ApplyGroup(pmenu_groups_light)
+  call ApplyGroup(misc_groups_light)
+endif
+
