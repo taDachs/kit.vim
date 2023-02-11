@@ -104,7 +104,7 @@ let gui_element_groups_dark = {
 \}
 
 let pmenu_groups_dark = {
-      \"Pmenu"    : {"guifg": kit_exclusive_green[0], "guibg": background_color[3]},
+      \"Pmenu"    : {"guifg": foreground_color[2], "guibg": background_color[2]},
       \"PmenuSel" : {"guifg": foreground_color[0], "guibg": kit_exclusive_blue[1]},
 \}
 
