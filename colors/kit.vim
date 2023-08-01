@@ -28,7 +28,7 @@ endif
 
 let background_color = ["#000000", "#050505", "#111111", "#222222", "#333333", "#444444"]
 let foreground_color = ["#ffffff", "#dddddd", "#bbbbbb", "#999999", "#777777"]
-let kit_exclusive_green = ["#00a88f", "#00bca9", "#72ccbf", "#acdfd6", "#d4ede9"]
+let kit_exclusive_green = ["#009682", "#00bca9", "#72ccbf", "#acdfd6", "#d4ede9"]
 let kit_exclusive_blue = ["#2075b8", "#6f93c8", "#94acd5", "#bbc8e4", "#dbe3f1"]
 let kit_may_green = ["#68c152", "#97d07e", "#b3dba0", "#d0e8c3", "#e6f2df"]
 let kit_yellow = ["#ffe844", "#ffef7b", "#fff2a1", "#fff7c5", "#ffeeda"]
