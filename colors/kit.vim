@@ -123,6 +123,12 @@ let lsp_groups_dark = {
       \"LspReferenceRead" : {"guifg": foreground_color[1], "guibg": kit_lila[1]},
       \"LspReferenceWrite" : {"guifg": foreground_color[1], "guibg": kit_red[1]},
 \}
+let plugin_groups_dark = {
+      \"IndentBlanklineChar" : {"guifg": background_color[5], "gui": "nocombine"},
+      \"IndentBlanklineSpaceChar" : {"guifg": background_color[5], "gui": "nocombine"},
+      \"CursorLine" : {"guibg": background_color[3]},
+      \"CursorLineNr" : {"guifg": kit_exclusive_green[0]},
+\}
 
 "
 " LIGHT COLORS
@@ -185,6 +191,7 @@ if (g:kit_light == 0)
   call ApplyGroup(gui_element_groups_dark)
   call ApplyGroup(pmenu_groups_dark)
   call ApplyGroup(misc_groups_dark)
+  call ApplyGroup(plugin_groups_dark)
 else
   call ApplyGroup(syntax_groups_light)
   call ApplyGroup(line_nr_groups_light)
