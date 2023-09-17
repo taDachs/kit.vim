@@ -14,7 +14,7 @@ highlight clear
 if exists("syntax_on")
   syntax reset
 endif
-let g:colors_name = "kit"
+let g:colors_name = "kit-light"
 set t_Co=256
 if !exists("g:kit_italic")
   let g:kit_italic = 1
@@ -22,13 +22,10 @@ endif
 if !exists("g:kit_bold")
   let g:kit_bold = 1
 endif
-if !exists("g:kit_light")
-  let g:kit_light = 0
-endif
 
 let background_color = ["#000000", "#050505", "#111111", "#222222", "#333333", "#444444"]
 let foreground_color = ["#ffffff", "#dddddd", "#bbbbbb", "#999999", "#777777"]
-let kit_exclusive_green = ["#009682", "#00bca9", "#72ccbf", "#acdfd6", "#d4ede9"]
+let kit_exclusive_green = ["#00a88f", "#00bca9", "#72ccbf", "#acdfd6", "#d4ede9"]
 let kit_exclusive_blue = ["#2075b8", "#6f93c8", "#94acd5", "#bbc8e4", "#dbe3f1"]
 let kit_may_green = ["#68c152", "#97d07e", "#b3dba0", "#d0e8c3", "#e6f2df"]
 let kit_yellow = ["#ffe844", "#ffef7b", "#fff2a1", "#fff7c5", "#ffeeda"]
@@ -70,75 +67,6 @@ fun! ApplyGroup(group)
   endfor
 endf
 
-"
-" DARK COLORS
-"
-" main config
-let syntax_groups_dark = {
-      \"Normal"       : {"guifg": foreground_color[1], "guibg": background_color[0]},
-      \"EndOfBuffer"  : {"guifg": foreground_color[1], "guibg": background_color[0]},
-      \"Error"        : {"guifg": foreground_color[0], "guibg": kit_red[0]},
-      \"Todo"         : {"guifg": background_color[0], "guibg": foreground_color[0]},
-      \"Comment"      : {"guifg": foreground_color[4], "gui": "italic"},
-      \"Underlined"   : {"guifg": kit_exclusive_green[1]},
-      \"Constant"     : {"guifg": kit_lila[1]},
-      \"String"       : {"guifg": kit_cyan_blue[3]},
-      \"Identifier"   : {"guifg": kit_exclusive_green[2], "gui": "italic"},
-      \"Function"     : {"guifg": kit_exclusive_blue[1]},
-      \"Statement"    : {"guifg": kit_exclusive_green[0], "gui": "bold"},
-      \"Keyword"      : {"guifg": kit_exclusive_green[0], "gui": "bold"},
-      \"Special"      : {"guifg": kit_cyan_blue[1]},
-      \"PreProc"      : {"guifg": kit_exclusive_green[0]},
-      \"Type"         : {"guifg": kit_exclusive_blue[0], "gui": "italic"},
-      \"StorageClass" : {"guifg": kit_exclusive_blue[1], "gui": "italic,bold"},
-\}
-
-let line_nr_groups_dark = {
-      \"SignColumn" : {"guifg": kit_red[1], "guibg": background_color[2]},
-      \"LineNr" : {"guifg": foreground_color[2], "guibg": background_color[2]},
-\}
-
-let gui_element_groups_dark = {
-      \"WinSeperator" : {"guifg": kit_exclusive_green[0], "guibg": kit_exclusive_green[0]},
-      \"Visual"       : {"guifg": kit_exclusive_blue[0], "guibg": kit_exclusive_green[4]},
-\}
-
-let pmenu_groups_dark = {
-      \"Pmenu"    : {"guifg": foreground_color[2], "guibg": background_color[2]},
-      \"PmenuSel" : {"guifg": foreground_color[0], "guibg": kit_exclusive_blue[1]},
-\}
-
-let misc_groups_dark = {
-      \"Title"  : {"guifg": foreground_color[0]},
-      \"Search" : {"guifg": background_color[1], "guibg": kit_may_green[1]},
-      \"ColorColumn" : {"guifg": foreground_color[3], "guibg": background_color[3]},
-      \"DiffAdd" : {"guifg": kit_may_green[0], "guibg": background_color[0]},
-      \"DiffDelete" : {"guifg": kit_red[0], "guibg": background_color[0]},
-      \"DiffChange" : {"guifg": kit_orange[0], "guibg": background_color[0]},
-      \"Folded"       : {"guifg": kit_exclusive_green[2],  "guibg": background_color[3]},
-\}
-
-let lsp_groups_dark = {
-      \"LspReferenceText" : {"guifg": foreground_color[1], "guibg": kit_lila[1]},
-      \"LspReferenceRead" : {"guifg": foreground_color[1], "guibg": kit_lila[1]},
-      \"LspReferenceWrite" : {"guifg": foreground_color[1], "guibg": kit_red[1]},
-\}
-
-let plugin_groups_dark = {
-      \"IndentBlanklineChar" : {"guifg": background_color[5], "gui": "nocombine"},
-      \"IndentBlanklineSpaceChar" : {"guifg": background_color[5], "gui": "nocombine"},
-      \"CursorLine" : {"guibg": background_color[3]},
-      \"CursorLineNr" : {"guifg": kit_exclusive_green[0]},
-\}
-
-let statusline_groups_dark = {
-      \"StatusLine" : {"guifg": background_color[2], "guibg": foreground_color[2]},
-      \"TabLine" : {"guifg": foreground_color[2], "guibg": background_color[4]},
-      \"TabLineSel" : {"guifg": background_color[2], "guibg": foreground_color[2]},
-      \"TabLineFill" : {"guifg": background_color[0], "guibg": foreground_color[2]},
-\}
-
-"
 " LIGHT COLORS
 "
 " main config
@@ -193,19 +121,9 @@ let lsp_groups_light = {
 \}
 
 
-if (g:kit_light == 0)
-  call ApplyGroup(syntax_groups_dark)
-  call ApplyGroup(line_nr_groups_dark)
-  call ApplyGroup(gui_element_groups_dark)
-  call ApplyGroup(pmenu_groups_dark)
-  call ApplyGroup(misc_groups_dark)
-  call ApplyGroup(plugin_groups_dark)
-  call ApplyGroup(statusline_groups_dark)
-else
-  call ApplyGroup(syntax_groups_light)
-  call ApplyGroup(line_nr_groups_light)
-  call ApplyGroup(gui_element_groups_light)
-  call ApplyGroup(pmenu_groups_light)
-  call ApplyGroup(misc_groups_light)
-endif
+call ApplyGroup(syntax_groups_light)
+call ApplyGroup(line_nr_groups_light)
+call ApplyGroup(gui_element_groups_light)
+call ApplyGroup(pmenu_groups_light)
+call ApplyGroup(misc_groups_light)
 
